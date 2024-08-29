@@ -19,7 +19,6 @@ struct MapViewScreen: View {
     }
     
     var body: some View {
-        NavigationStack {
             Map(position: $position) {
                 Annotation(place.intersted ? "Place of Interest" : "Not Interested", coordinate: place.location) {
                     ZStack {
@@ -34,7 +33,6 @@ struct MapViewScreen: View {
                     }
                 }
             }
-        }
         .toolbarBackground(.automatic)
     }
 }

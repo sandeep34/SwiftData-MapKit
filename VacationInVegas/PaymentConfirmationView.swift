@@ -73,10 +73,11 @@ struct PaymentConfirmationView: View {
                         .border(.blue, width: 1)
                 }
             }
+            .navigationDestination(isPresented: $willMoveToNextScreen) {
+                PaymentMethodView()
+            }
         }
         .padding()
-        .navigationBarHidden(true)
-        .navigate(to: PaymentMethodView(), when: $willMoveToNextScreen)
     }
 }
 struct CardView: View {
@@ -87,36 +88,6 @@ struct CardView: View {
             let rect = RoundedRectangle(cornerRadius: 20)
             rect.fill().foregroundColor(.white)
             rect.strokeBorder(.blue, lineWidth: 2)
-        }
-    }
-}
-
-extension View {
-    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
-        NavigationView {
-            ZStack {
-                self
-                    .navigationBarTitle("")
-                    .navigationBarHidden(false)
-                NavigationLink(
-                    destination: view
-                        .navigationBarTitle("")
-                        .navigationBarHidden(false),
-                    isActive: binding
-                ) {
-                    EmptyView()
-                }
-            }
-        }
-        .navigationViewStyle(.stack)
-    }
-    
-    func navigateWithDestination<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
-        NavigationStack {
-            self
-                .navigationDestination(isPresented: binding) {
-                    view
-                }
         }
     }
 }

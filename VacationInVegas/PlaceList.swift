@@ -14,28 +14,28 @@ struct PlaceList: View {
     @StateObject var viewModel: PlaceViewModel
     
     var body: some View {
-        NavigationStack {
             List(viewModel.filteredPlaces) { place in
-                NavigationLink(destination: DetailView(place: place)) {
-                    HStack {
-                        place.image
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(.rect(cornerRadius: 7))
-                            .frame(width: 100, height: 100)
-                        Text(place.name)
-                        Spacer()
-                        Image(systemName: place.intersted ? "star.fill" : "star")
-                                .foregroundStyle(.yellow)
-                    }
-                }
+                    NavigationLink(
+                        value: place,
+                        label: {
+                            HStack {
+                                place.image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(.rect(cornerRadius: 7))
+                                    .frame(width: 100, height: 100)
+                                Text(place.name)
+                                Spacer()
+                                Image(systemName: place.intersted ? "star.fill" : "star")
+                                        .foregroundStyle(.yellow)
+                            }
+                        }
+                    )
             }
             .navigationTitle("Places")
-//            .navigationDestination(for: Place.self) { place in
-//                MapViewScreen(place: place, position: .camera(MapCamera(
-//                    centerCoordinate: place.location, distance: 1000, heading: 250, pitch: 80
-//                )))
-//            }
+        .navigationDestination(for: Place.self) { place in
+            DetailView(place: place)
+        }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Show Images", systemImage: "photo") {
@@ -58,13 +58,8 @@ struct PlaceList: View {
             .sheet(isPresented: $viewModel.showImages) {
                 Scrolling()
             }
-        }
     }
     
 }
-
-//#Preview {
-//    PlaceList()
-//}
 
 

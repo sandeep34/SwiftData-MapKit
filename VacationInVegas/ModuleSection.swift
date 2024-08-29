@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ModuleSection: View {
-    @State private var willMoveToNextScreen = false
+    @State private var selectedModule: Modules?
     
     let modules: [Modules]
     let places: [Place]
@@ -28,36 +28,57 @@ struct ModuleSection: View {
     
     var body: some View {
         NavigationStack {
-                List(modules) { item in
-                    switch item.index {
-                    case 0:
-                        NavigationLink("Symbols", destination: Symbols())
-                    case 1:
-                        NavigationLink("Image", destination: ScrollImage(image: "bellagio"))
-                    case 3:
-                        NavigationLink("Scrolling", destination: Scrolling())
-                    case 4:
-                        NavigationLink("SwiftData", destination: PlaceList(viewModel: PlaceViewModel(places: places)))
-                    case 5:
-                        NavigationLink("Map Preview", destination: MapViewScreen(
-                            place: places[0],
-                            position: MapCameraPosition.camera(MapCamera(centerCoordinate: places[0].location, distance: 1000, heading: 250, pitch: 80))
-                        ))
-                    case 6:
-                        NavigationLink("Payment Confirmation", destination: PaymentConfirmationView())
-                    default:
-                        Text("Default case")
+            List(modules) { module in
+                NavigationLink(
+                    value: module,
+                    label: {
+                        Text(module.name)
                     }
-                }
-                .navigationTitle("Select Module you like to explore")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigateWithDestination(to: PaymentConfirmationView(), when: $willMoveToNextScreen)
+                )
+            }
+            .navigationTitle("Select Module you like to explore")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: Modules.self) { module in
+                detailView(for: module)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func detailView(for module: Modules) -> some View {
+        switch module.index {
+        case 0:
+            Symbols()
+        case 1:
+            ScrollImage(image: "bellagio")
+        case 3:
+            Scrolling()
+        case 4:
+            PlaceList(viewModel: PlaceViewModel(places: places))
+        case 5:
+            MapViewScreen(
+                place: places[0],
+                position: MapCameraPosition.camera(MapCamera(centerCoordinate: places[0].location, distance: 1000, heading: 250, pitch: 80))
+            )
+        case 6:
+            PaymentConfirmationView()
+        default:
+            EmptyView()
         }
     }
 }
 
-struct Modules: Identifiable {
+struct Modules: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     let index: Int
     let name: String
+    
+    static func == (lhs: Modules, rhs: Modules) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(name)
+            hasher.combine(index)
+        }
 }

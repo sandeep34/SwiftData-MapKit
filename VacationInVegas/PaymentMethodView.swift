@@ -15,7 +15,6 @@ struct PaymentMethodView: View {
     @State var isPOBox: Bool = true
 
     var body: some View {
-//        NavigationView {
             Form {
                 Section(header: Text("Accepted Card Types")) {
                     HStack {
@@ -93,7 +92,6 @@ struct PaymentMethodView: View {
                 .padding()
             }
             .navigationBarTitle(Text("Add a Payment Method"), displayMode: .inline)
-//        }
     }
 }
 
