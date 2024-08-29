@@ -20,6 +20,8 @@
 		27DFB4F82C779686007C8195 /* MapViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DFB4F72C779686007C8195 /* MapViewScreen.swift */; };
 		5697EDEC2C7B944200A6E923 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697EDEB2C7B944200A6E923 /* PlaceViewModel.swift */; };
 		5697EDEE2C7B9C0200A6E923 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697EDED2C7B9C0200A6E923 /* DetailsView.swift */; };
+		5697EDF02C80C7EE00A6E923 /* PaymentConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697EDEF2C80C7ED00A6E923 /* PaymentConfirmationView.swift */; };
+		5697EDF22C80C7FD00A6E923 /* PaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697EDF12C80C7FD00A6E923 /* PaymentMethodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		27DFB4F72C779686007C8195 /* MapViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewScreen.swift; sourceTree = "<group>"; };
 		5697EDEB2C7B944200A6E923 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		5697EDED2C7B9C0200A6E923 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		5697EDEF2C80C7ED00A6E923 /* PaymentConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationView.swift; sourceTree = "<group>"; };
+		5697EDF12C80C7FD00A6E923 /* PaymentMethodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				27DFB4F52C776082007C8195 /* PlaceList.swift */,
 				27DFB4F72C779686007C8195 /* MapViewScreen.swift */,
 				5697EDED2C7B9C0200A6E923 /* DetailsView.swift */,
+				5697EDEF2C80C7ED00A6E923 /* PaymentConfirmationView.swift */,
+				5697EDF12C80C7FD00A6E923 /* PaymentMethodView.swift */,
 				27DFB4DF2C7718F4007C8195 /* Assets.xcassets */,
 				27DFB4E12C7718F4007C8195 /* Preview Content */,
 			);
@@ -174,7 +180,9 @@
 				5697EDEC2C7B944200A6E923 /* PlaceViewModel.swift in Sources */,
 				27DFB4F82C779686007C8195 /* MapViewScreen.swift in Sources */,
 				27DFB4F62C776082007C8195 /* PlaceList.swift in Sources */,
+				5697EDF02C80C7EE00A6E923 /* PaymentConfirmationView.swift in Sources */,
 				27DFB4DC2C7718F2007C8195 /* VacationInVegasApp.swift in Sources */,
+				5697EDF22C80C7FD00A6E923 /* PaymentMethodView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

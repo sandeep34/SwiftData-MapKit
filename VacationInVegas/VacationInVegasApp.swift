@@ -16,7 +16,8 @@ struct VacationInVegasApp: App {
                                     Modules(index: 1, name: "Image"),
                                     Modules(index: 3, name: "Scrolling"),
                                     Modules(index: 4, name: "SwiftData"),
-                                    Modules(index: 5, name: "Map Preview")])
+                                    Modules(index: 5, name: "Map Preview"),
+                                    Modules(index: 6, name: "Payment Confirmation")])
         }
     }
 }

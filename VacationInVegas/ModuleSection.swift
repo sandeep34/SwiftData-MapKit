@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ModuleSection: View {
+    @State private var willMoveToNextScreen = false
     
     let modules: [Modules]
     let places: [Place]
@@ -42,12 +43,15 @@ struct ModuleSection: View {
                             place: places[0],
                             position: MapCameraPosition.camera(MapCamera(centerCoordinate: places[0].location, distance: 1000, heading: 250, pitch: 80))
                         ))
+                    case 6:
+                        NavigationLink("Payment Confirmation", destination: PaymentConfirmationView())
                     default:
                         Text("Default case")
                     }
                 }
                 .navigationTitle("Select Module you like to explore")
                 .navigationBarTitleDisplayMode(.inline)
+                .navigateWithDestination(to: PaymentConfirmationView(), when: $willMoveToNextScreen)
         }
     }
 }
